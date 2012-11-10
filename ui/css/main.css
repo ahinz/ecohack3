@@ -116,6 +116,7 @@ h1{
 #tbl {
  float: right;
  width: 300px;
+ color: #eee;
 }
 
 .input-type {
