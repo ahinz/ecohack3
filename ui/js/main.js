@@ -5,6 +5,18 @@ L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Ma
     maxZoom: 15
 }).addTo(map);
 
+var v1950 = L.tileLayer('http://a.tiles.mapbox.com/v2/villeda.1950-forest/{z}/{x}/{y}.png',
+                        { maxZoom: 15,
+                          attribution: ''
+                        });
+
+var v2000 = L.tileLayer('http://a.tiles.mapbox.com/v2/villeda.1950-forest/{z}/{x}/{y}.png',
+                        { maxZoom: 15,
+                          attribution: ''
+                        });
+
+v1950.addTo(map);
+
 map.setView([-18.40,46.62], 5);
 
 var jsonData = {}
@@ -52,18 +64,31 @@ function getClimates() {
     return climates;
 }
 
+function showOnlyTrue() {
+    return $("#onlytrue").is(":checked");
+}
+
 function render() {
     var dd = jsonData;
     var tbl = "<table>";
     var years =  getYears();
     var clims = getClimates();
     var species = getSpecies();
+    var onlytrue = showOnlyTrue();
+
     for(var spc in dd) {
         if (species == null || species.length == 0 ||
             spc.toLowerCase().indexOf(species.toLowerCase()) >= 0) {
+            var curRow = ""
             tbl += "<tr><td>" + spc + "</td></tr>";
             for(var year in dd[spc]) {
-                if (years.indexOf(year) >= 0) {
+                var validYear = false;
+                for(var ctype in dd[spc][year]) {
+                    validYear = clims.indexOf(ctype) >= 0 && (dd[spc][year][ctype][0].valid || !onlytrue)
+                    if (validYear) { break; }
+                }
+
+                if (years.indexOf(year) >= 0 && validYear) {
                     tbl += "<tr><td>"
                     tbl += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
                     tbl += year + "</td></tr>";
@@ -80,13 +105,16 @@ function render() {
                                 var b = 50*(data.value + 50) / 100 + 50;
                                 var clr = "hsl(0," + v + "% ," + b + "%);";
                             }
-                            var clazz = "background-color: " + clr;
-                            //var clazz = data.valid ? "good" : "bad";
-                            tbl += "<tr><td style=\"" + clazz + "\">"
-                            tbl += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-                            tbl += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-                            tbl += ctype + "</td>"
-                            tbl += "<td style=\"" + clazz + "\">" + data.valid + " (" + data.value + ")</td></tr>";
+
+                            if (!onlytrue || data.valid) {
+                                var clazz = "background-color: " + clr;
+                                //var clazz = data.valid ? "good" : "bad";
+                                tbl += "<tr><td style=\"" + clazz + "\">"
+                                tbl += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+                                tbl += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+                                tbl += ctype + "</td>"
+                                tbl += "<td style=\"" + clazz + "\">" + data.valid + " (" + data.value + ")</td></tr>";
+                            }
                         }
                     }
                 }
@@ -106,3 +134,4 @@ $("#forest").click(render);
 $("#only").click(render);
 $("#species").keydown(render);
 $("#species").keyup(render);
+$("#onlytrue").click(render);
