@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Average+Sans' rel='stylesheet' type='text/css'>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -26,25 +27,30 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <div>
-          Years: 
-          1950 <input type="checkbox" id="y1950" checked>
-          2000 <input type="checkbox" id="y2000" checked>
-          2080 <input type="checkbox" id="y2080" checked>
-          2080a <input type="checkbox" id="y2080a" checked>
-          2080b <input type="checkbox" id="y2080b" checked>
-        </div>
-        <div>
-          Climate Params:
-          "Forest" <input type="checkbox" id="forest" checked>
-          "Only" <input type="checkbox" id="only" checked>
-        </div>
-        <div>
-          Species: <input id="species">
+       
+        <h1>Madagascar FOUR</h1>
+        <div class='source'>A project of <span class='reb'>REBIOMA</span></div>
+        <div id="map"></div>
+        <div class='layer-select'> 
+            <div class='input-type'>
+              Years: 
+              1950 <input type="checkbox" id="y1950" checked>
+              2000 <input type="checkbox" id="y2000" checked>
+              2080 <input type="checkbox" id="y2080" checked>
+              2080a <input type="checkbox" id="y2080a" checked>
+              2080b <input type="checkbox" id="y2080b" checked>
+            </div>
+            <div class='input-type'>
+                <div class='params'>Model Parameters:
+                    <input type="checkbox" id="forest"><div class='scenario'>Forest + Climate</div>
+                    <input type="checkbox" id="only"><div class='scenario'>Climate Only </div>
+                </div>
+            </div>
+            <div class='input-type'>
+              Species: <input id="species">
+            </div>
         </div>
         <div id="tbl"></div>
-        <div id="map"></div>
-
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="http://cdn.leafletjs.com/leaflet-0.4/leaflet.js"></script>

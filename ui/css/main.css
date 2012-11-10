@@ -21,6 +21,8 @@ textarea {
 body {
     font-size: 1em;
     line-height: 1.4;
+    background-color: #222;
+
 }
 
 /*
@@ -93,38 +95,37 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+h1{
+    color: #eee;
+}
+
+.source {
+    color: #eee;
+}
+
+.reb {
+    color:#f07;
+}
+
 #map {
- height: 400px; 
- float: left;
- width: 400px;
+ height: 360px; 
+ /*float: left;*/
+ width: 680px;
 }
 
 #tbl {
- float: left;
+ float: right;
  width: 300px;
 }
 
-.good {
- background: green;
+.input-type {
+    padding: 5px;
+    color:#fff;
+    font-family: 'Average Sans', sans-serif;
 }
-
-.bad {
- background: red;
+.layer-select {
+    padding-left: 20px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* ==========================================================================
    Helper classes
