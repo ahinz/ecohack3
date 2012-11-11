@@ -28,10 +28,11 @@
 
         <!-- Add your site or application content here -->
        
-        <h1>Madagascar FOUR</h1>
+        <h1>Madagascar Biodiversity</h1>
         <div class='source'>A project of <span class='reb'>REBIOMA</span></div>
-        <div id="map"></div>
-        <div class='layer-select'> 
+        <div id="mapcontainer">
+          <div id="map"></div>
+          <div class='layer-select'> 
             <div class='input-type'>
               Years: 
               1950 <input type="checkbox" id="y1950" checked>
@@ -41,10 +42,10 @@
               2080b <input type="checkbox" id="y2080b" checked>
             </div>
             <div class='input-type'>
-                <div class='params'>Model Parameters:
-                    <div class='scenario'><input type="checkbox" id="forest"> | Forest + Climate</div>
-                    <div class='scenario'> <input type="checkbox" id="only"> | Climate Only </div>
-                </div>
+              <div class='params'>Model Parameters:
+                <div class='scenario'><input type="checkbox" id="forest" checked> | Forest + Climate</div>
+                <div class='scenario'> <input type="checkbox" id="only" checked> | Climate Only </div>
+              </div>
             </div>
             <div class='input-type'>
               Species: <input id="species">
@@ -52,8 +53,10 @@
             <div class='input-type'>
               Only show present sites: <input type="checkbox" id="onlytrue">
             </div>
-
+            
+          </div>
         </div>
+        
         <div id="tbl"></div>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.min.js"><\/script>')</script>

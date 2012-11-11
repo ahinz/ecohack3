@@ -107,16 +107,31 @@ h1{
     color:#f07;
 }
 
+#mapcontainer {
+ float: left;
+}
+
+table {
+  background-color: rgb(100,121,120);
+}
+
+body {
+ padding: 20px;
+}
+
 #map {
  height: 360px; 
- /*float: left;*/
  width: 680px;
 }
 
+h1 {
+ margin-top: 0;
+}
+
 #tbl {
- float: right;
+ margin-left: 25px;
+ float: left;
  width: 300px;
- color: #eee;
 }
 
 .input-type {
@@ -125,7 +140,8 @@ h1{
     font-family: 'Average Sans', sans-serif;
 }
 .layer-select {
-    padding-left: 20px;
+    padding-left: 20px; 
+    float: left;
 }
 
 /* ==========================================================================
